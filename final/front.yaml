@@ -1,0 +1,33 @@
+kind: Deployment
+metadata:
+  name: api-front-deployment
+  labels:
+    app: api-front
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-front
+  template:
+    metadata:
+      labels:
+        app: api-front
+    spec:
+      containers:
+      - name: api-front
+        image: s/practica:1.0.2
+        ports:
+        - containerPort: 5000
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: front-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: api-front
+  ports:
+  - protocol: TCP
+    port: 5000
+    targetPort: 5000
