@@ -9,7 +9,7 @@ export const Matches = () => {
 
       <ListGroup className='w-80'>
         <Link to={'/partido/1'}>
-          <ListGroup.Item icon={IoFootball} active onClick={showDetails}>
+          <ListGroup.Item icon={IoFootball} active>
             Emelec VS Barcelona - Activo
           </ListGroup.Item>
         </Link>
