@@ -6,10 +6,13 @@ import axios from 'axios';
 
 const app = createApp(App);
 
-// Configura la URL base para todas las solicitudes Axios
-axios.defaults.baseURL = process.env.VUE_APP_API_URL; // Reemplaza con la URL de tu API
+const api = axios.create({ baseURL: process.env.VUE_APP_API_URL });
 
-// Agrega Axios al prototipo de Vue para que esté disponible en todos los componentes
-app.config.globalProperties.$http = axios;
+const microservices = axios.create({
+  baseURL: process.env.VUE_APP_MICROSERVICES_URL,
+});
+
+app.config.globalProperties.$http = api;
+app.config.globalProperties.$microservices = microservices;
 
 app.use(store).use(router).mount('#app');
