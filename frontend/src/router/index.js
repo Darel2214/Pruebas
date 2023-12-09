@@ -1,10 +1,15 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
 
 const routes = [
   {
     path: '/',
     name: 'Inicio',
     component: () => import('../views/Inicio.vue'),
+  },
+  {
+    path: '/partidos',
+    name: 'Partidos',
+    component: () => import('../views/Partido.vue'),
   },
   {
     path: '/ClubFutbol',
@@ -46,11 +51,11 @@ const routes = [
     name: 'ConcursoTorneo',
     component: () => import('../views/ConcursoTorneo.vue'),
   },
-]
+];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;

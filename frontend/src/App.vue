@@ -1,10 +1,5 @@
 <template>
   <div id="app">
-    <!-- Contenido principal -->
-    <main>
-     
-    </main>
-    
     <!-- Importa y utiliza Sidebar.vue -->
     <Sidebar />
   </div>
@@ -12,7 +7,7 @@
 
 <script>
 // Importa el componente Sidebar.vue
-import Sidebar from "@/components/Sidebar.vue";
+import Sidebar from '@/components/Sidebar.vue';
 
 export default {
   components: {
@@ -20,7 +15,3 @@ export default {
   },
 };
 </script>
-
-<style>
-/* Estilos de App.vue */
-</style>
