@@ -11,12 +11,12 @@ import { RabbitMQ } from '../constants';
 export class ClientProxyFutbolito {
   constructor(private readonly config: ConfigService) {}
 
-  clientProxyPlayers(): ClientProxy {
+  clientProxyMatches(): ClientProxy {
     return ClientProxyFactory.create({
       transport: Transport.RMQ,
       options: {
         urls: this.config.get('AMQP_URL'),
-        queue: RabbitMQ.PlayerQueue,
+        queue: RabbitMQ.MatchQueue,
       },
     });
   }

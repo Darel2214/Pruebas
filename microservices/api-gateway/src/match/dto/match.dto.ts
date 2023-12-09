@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
-export class PlayerDTO {
+export class MatchDto {
   @IsNumber()
   @IsNotEmpty()
   id: number;
