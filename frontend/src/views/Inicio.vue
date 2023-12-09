@@ -9,7 +9,7 @@
         height="200"
       />
 
-      <div class="card-body">
+      <div class="card-body d-flex flex-column justify-content-between">
         <h5 class="card-title">Partidos</h5>
         <p class="card-text">Haz clic para explorar los partidos de fútbol.</p>
         <router-link :to="{ name: 'Partidos' }" class="btn btn-primary"
@@ -27,7 +27,7 @@
         height="200"
       />
 
-      <div class="card-body">
+      <div class="card-body d-flex flex-column justify-content-between">
         <h5 class="card-title">Club de Fútbol</h5>
         <p class="card-text">Haz clic para explorar los clubs de fútbol.</p>
         <router-link :to="{ name: 'Club de Fútbol' }" class="btn btn-primary"
@@ -44,7 +44,7 @@
         width="300"
         height="200"
       />
-      <div class="card-body">
+      <div class="card-body d-flex flex-column justify-content-between">
         <h5 class="card-title">Jugador</h5>
         <p class="card-text">Haz clic para explorar los jugadores.</p>
         <router-link :to="{ name: 'Jugador' }" class="btn btn-primary"
@@ -61,7 +61,7 @@
         width="300"
         height="200"
       />
-      <div class="card-body">
+      <div class="card-body d-flex flex-column justify-content-between">
         <h5 class="card-title">Membresia</h5>
         <p class="card-text">Haz clic para explorar las membresias.</p>
         <router-link :to="{ name: 'Membresia' }" class="btn btn-primary"
@@ -78,7 +78,7 @@
         width="300"
         height="200"
       />
-      <div class="card-body">
+      <div class="card-body d-flex flex-column justify-content-between">
         <h5 class="card-title">Equipo</h5>
         <p class="card-text">Haz clic para explorar los equipos.</p>
         <router-link :to="{ name: 'Equipo' }" class="btn btn-primary"
@@ -95,7 +95,7 @@
         width="300"
         height="200"
       />
-      <div class="card-body">
+      <div class="card-body d-flex flex-column justify-content-between">
         <h5 class="card-title">Concurso torneo</h5>
         <p class="card-text">Haz clic para explorar los concurso torneos.</p>
         <router-link :to="{ name: 'ConcursoTorneo' }" class="btn btn-primary"
@@ -112,7 +112,7 @@
         width="300"
         height="200"
       />
-      <div class="card-body">
+      <div class="card-body d-flex flex-column justify-content-between">
         <h5 class="card-title">Patrocinador</h5>
         <p class="card-text">Haz clic para explorar los patrocinadores.</p>
         <router-link :to="{ name: 'Patrocinador' }" class="btn btn-primary"
@@ -129,7 +129,7 @@
         width="300"
         height="200"
       />
-      <div class="card-body">
+      <div class="card-body d-flex flex-column justify-content-between">
         <h5 class="card-title">Torneo</h5>
         <p class="card-text">Haz clic para explorar los torneos.</p>
         <router-link :to="{ name: 'Torneo' }" class="btn btn-primary"
@@ -146,7 +146,7 @@
         width="300"
         height="200"
       />
-      <div class="card-body">
+      <div class="card-body d-flex flex-column justify-content-between">
         <h5 class="card-title">Participacion</h5>
         <p class="card-text">Haz clic para explorar las participaciones.</p>
         <router-link :to="{ name: 'Participacion' }" class="btn btn-primary"
