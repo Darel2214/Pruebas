@@ -20,7 +20,7 @@ export class MatchController {
   }
 
   @MessagePattern(MatchMsg.FIND_ONE)
-  findOne(@Payload() id: number) {
+  findOne(@Payload() id: string) {
     return this.matchService.findOne(id);
   }
 
@@ -30,7 +30,7 @@ export class MatchController {
   }
 
   @MessagePattern(MatchMsg.DELETE)
-  remove(@Payload() id: number) {
+  remove(@Payload() id: string) {
     return this.matchService.remove(id);
   }
 }

@@ -1,77 +1,32 @@
 import { Injectable } from '@nestjs/common';
+import { Model } from 'mongoose';
+import { InjectModel } from '@nestjs/mongoose';
 import { CreateMatchDto } from './dto/create-match.dto';
 import { UpdateMatchDto } from './dto/update-match.dto';
-import { Match } from './entities/match.entity';
+import { Match } from './schemas/match.schema';
 
 @Injectable()
 export class MatchService {
-  private registros: Match[] = [
-    {
-      id: 1,
-      fecha: new Date(),
-      equipo1: 'Barcelona',
-      equipo2: 'liga',
-      marcador1: 1,
-      marcador2: 5,
-      mensajes: ['dasdasd'],
-    },
-    {
-      id: 2,
-      fecha: new Date(),
-      equipo1: 'Barcelona',
-      equipo2: 'liga',
-      marcador1: 1,
-      marcador2: 5,
-      mensajes: ['dasdasd', 'dasdasd', 'dasdasd', 'dasdasd'],
-    },
-  ];
+  constructor(@InjectModel(Match.name) private model: Model<Match>) {}
 
-  create(createMatchDto: CreateMatchDto) {
-    const element = new Match();
-    this.registros.sort((a, b) => b.id - a.id);
-    element.id = this.registros[0].id + 1;
-    element.fecha = createMatchDto.fecha;
-    element.equipo1 = createMatchDto.equipo1;
-    element.equipo2 = createMatchDto.equipo2;
-    element.marcador1 = createMatchDto.marcador1;
-    element.marcador2 = createMatchDto.marcador2;
-    element.mensajes = createMatchDto.mensajes;
-    this.registros.push(element);
-    return element;
+  async create(createMatchDto: CreateMatchDto): Promise<Match> {
+    const match = new this.model(createMatchDto);
+    return match.save();
   }
 
-  findAll() {
-    return this.registros;
+  async findAll(): Promise<Match[]> {
+    return this.model.find().exec();
   }
 
-  findOne(id: number) {
-    return this.registros.find((item) => item.id === Number(id));
+  async findOne(id: string): Promise<Match> {
+    return this.model.findById(id).exec();
   }
 
   update(updateMatchDto: UpdateMatchDto) {
-    const element = this.findOne(updateMatchDto.id);
-    element.fecha = updateMatchDto.fecha;
-    element.equipo1 = updateMatchDto.equipo1;
-    element.equipo2 = updateMatchDto.equipo2;
-    element.marcador1 = updateMatchDto.marcador1;
-    element.marcador2 = updateMatchDto.marcador2;
-    element.mensajes = updateMatchDto.mensajes;
-
-    this.registros = this.registros.map((item) => {
-      if (item.id === updateMatchDto.id) {
-        return element;
-      }
-      return item;
-    });
-
-    return element;
+    return this.model.findByIdAndUpdate(updateMatchDto.id, updateMatchDto);
   }
 
-  remove(id: number) {
-    const element = this.findOne(id);
-
-    this.registros = this.registros.filter((item) => item.id !== Number(id));
-
-    return element;
+  remove(id: string) {
+    return this.model.findByIdAndDelete(id).exec();
   }
 }

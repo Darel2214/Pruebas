@@ -8,9 +8,7 @@ import {
   Put,
 } from '@nestjs/common';
 import { Observable } from 'rxjs';
-import { MatchDto } from './dto/match.dto';
 import { ClientProxyFutbolito } from 'src/common/proxy/client-proxy';
-import { IMatch } from 'src/common/interfaces/match.interface';
 import { MatchMsg } from 'src/common/constants';
 
 @Controller('api/v2/match')
@@ -20,27 +18,27 @@ export class MatchController {
   private _clientProxy = this.clientProxy.clientProxyMatches();
 
   @Post()
-  create(@Body() matchDto: MatchDto): Observable<IMatch> {
+  create(@Body() matchDto: any): Observable<any> {
     return this._clientProxy.send(MatchMsg.CREATE, matchDto);
   }
 
   @Get()
-  findAll(): Observable<IMatch[]> {
+  findAll(): Observable<any[]> {
     return this._clientProxy.send(MatchMsg.FIND_ALL, '');
   }
 
   @Get(':id')
-  findOne(@Param('id') id: number): Observable<IMatch> {
+  findOne(@Param('id') id: string): Observable<any> {
     return this._clientProxy.send(MatchMsg.FIND_ONE, id);
   }
 
   @Put()
-  update(@Body() dto: MatchDto): Observable<IMatch> {
+  update(@Body() dto: any): Observable<any> {
     return this._clientProxy.send(MatchMsg.UPDATE, dto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: number): Observable<IMatch> {
+  remove(@Param('id') id: string): Observable<any> {
     return this._clientProxy.send(MatchMsg.DELETE, id);
   }
 }
