@@ -5,6 +5,9 @@ export class CreateMatchDto {
   fecha: Date;
 
   @IsNotEmpty()
+  hora: string;
+
+  @IsNotEmpty()
   equipo1: string;
 
   @IsNotEmpty()
@@ -18,4 +21,7 @@ export class CreateMatchDto {
 
   @IsNotEmpty()
   mensajes: any[string];
+
+  @IsNotEmpty()
+  estado: string;
 }

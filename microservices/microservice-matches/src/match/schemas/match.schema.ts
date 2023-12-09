@@ -8,6 +8,8 @@ export class Match {
   @Prop()
   fecha: Date;
   @Prop()
+  hora: string;
+  @Prop()
   equipo1: string;
   @Prop()
   equipo2: string;
@@ -17,6 +19,8 @@ export class Match {
   marcador2: number;
   @Prop([String])
   mensajes: string[];
+  @Prop()
+  estado: string;
 }
 
 export const MatchSchema = SchemaFactory.createForClass(Match);
