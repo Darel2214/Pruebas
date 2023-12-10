@@ -31,6 +31,8 @@
       >PARTICIPACION</router-link
     >
 
+    <router-link to="/reportes" class="nav-link">REPORTES</router-link>
+
     <div @click="logout" class="close-link">Cerrar Sesión</div>
   </nav>
 </template>

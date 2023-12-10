@@ -57,6 +57,11 @@ const routes = [
         name: 'ConcursoTorneo',
         component: () => import('../views/ConcursoTorneo.vue'),
       },
+      {
+        path: '/reportes',
+        name: 'Reportes',
+        component: () => import('../views/Reportes.vue'),
+      },
     ],
   },
   {
