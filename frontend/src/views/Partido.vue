@@ -10,27 +10,39 @@
     <div v-if="createForm">
       <h2>Nuevo Partido</h2>
 
-      <form
-        @submit.prevent="create()"
-        class="d-flex flex-row align-items-center"
-        style="gap: 20px"
-      >
-        <select class="form-control" v-model="formData.equipo1" required>
-          <option :value="club.value" v-for="club in clubes" :key="club.value">
-            {{ club.name }}
-          </option>
-        </select>
+      <form @submit.prevent="create()" class="d-flex flex-row align-items-end">
+        <div class="form-control border-0">
+          <label class="form-label">Equipo 1</label>
+          <select class="form-control" v-model="formData.equipo1" required>
+            <option
+              :value="club.value"
+              v-for="club in clubes"
+              :key="club.value"
+            >
+              {{ club.name }}
+            </option>
+          </select>
+        </div>
 
-        <strong>VS</strong>
+        <strong class="pb-3">VS</strong>
 
-        <select class="form-control" v-model="formData.equipo2" required>
-          <option :value="club.value" v-for="club in clubes" :key="club.value">
-            {{ club.name }}
-          </option>
-        </select>
+        <div class="form-control border-0">
+          <label class="form-label">Equipo 2</label>
+          <select class="form-control" v-model="formData.equipo2" required>
+            <option
+              :value="club.value"
+              v-for="club in clubes"
+              :key="club.value"
+            >
+              {{ club.name }}
+            </option>
+          </select>
+        </div>
 
-        <button type="submit" class="btn btn-success">Agregar</button>
-        <button @click="hideCreateForm" class="btn btn-danger">Cancelar</button>
+        <button type="submit" class="btn btn-success mb-2 mx-2">Iniciar</button>
+        <button @click="hideCreateForm" class="btn btn-danger mb-2">
+          Cancelar
+        </button>
       </form>
     </div>
 
@@ -38,60 +50,133 @@
     <div v-if="editForm">
       <h2>Actualizar Partido</h2>
 
-      <form
-        @submit.prevent="update()"
-        class="d-flex flex-row align-items-center"
-        style="gap: 20px"
-      >
-        <select class="form-control" v-model="editFormData.equipo1" required>
-          <option :value="club.value" v-for="club in clubes" :key="club.value">
-            {{ club.name }}
-          </option>
-        </select>
+      <form @submit.prevent="update()" class="d-flex flex-row align-items-end">
+        <div class="form-control border-0">
+          <label class="form-label">Equipo 1</label>
+          <select class="form-control" v-model="editFormData.equipo1" required>
+            <option
+              :value="club.value"
+              v-for="club in clubes"
+              :key="club.value"
+            >
+              {{ club.name }}
+            </option>
+          </select>
+        </div>
 
-        <strong>VS</strong>
+        <strong class="pb-3">VS</strong>
 
-        <select class="form-control" v-model="editFormData.equipo2" required>
-          <option :value="club.value" v-for="club in clubes" :key="club.value">
-            {{ club.name }}
-          </option>
-        </select>
+        <div class="form-control border-0">
+          <label class="form-label">Equipo 2</label>
+          <select class="form-control" v-model="editFormData.equipo2" required>
+            <option
+              :value="club.value"
+              v-for="club in clubes"
+              :key="club.value"
+            >
+              {{ club.name }}
+            </option>
+          </select>
+        </div>
 
-        <input
-          v-model="editFormData.dateFormat"
-          type="date"
-          required
-          class="form-control"
-        />
+        <div class="form-control border-0">
+          <label class="form-label">Fecha</label>
+          <input
+            v-model="editFormData.dateFormat"
+            type="date"
+            required
+            class="form-control"
+          />
+        </div>
 
-        <input
-          v-model="editFormData.hora"
-          type="time"
-          required
-          class="form-control"
-        />
+        <div class="form-control border-0">
+          <label class="form-label">Hora</label>
+          <input
+            v-model="editFormData.hora"
+            type="time"
+            required
+            class="form-control"
+          />
+        </div>
 
-        <input
-          v-model="editFormData.marcador1"
-          type="number"
-          min="0"
-          required
-          class="form-control"
-        />
+        <div class="form-control border-0">
+          <label class="form-label">Marcador 1</label>
+          <input
+            v-model="editFormData.marcador1"
+            type="number"
+            min="0"
+            required
+            class="form-control"
+          />
+        </div>
 
-        <input
-          v-model="editFormData.marcador2"
-          type="number"
-          min="0"
-          required
-          class="form-control"
-        />
+        <div class="form-control border-0">
+          <label class="form-label">Marcador 2</label>
+          <input
+            v-model="editFormData.marcador2"
+            type="number"
+            min="0"
+            required
+            class="form-control"
+          />
+        </div>
 
-        <button type="submit" class="btn btn-success">Actualizar</button>
-        <button @click="hideEditForm" class="btn btn-danger">Cancelar</button>
+        <button type="submit" class="btn btn-success mb-2 mx-2">
+          Actualizar
+        </button>
+        <button @click="hideEditForm" class="btn btn-danger mb-2">
+          Cancelar
+        </button>
       </form>
     </div>
 
+    <!-- Formulario de actualización -->
+    <div v-if="updateForm">
+      <h2>Registro de Marcador</h2>
+
+      <form
+        @submit.prevent="updateMatch()"
+        class="d-flex flex-row align-items-end"
+      >
+        <div class="form-control border-0">
+          <label class="form-label">Marcador 1</label>
+          <input
+            v-model="updateFormData.marcador1"
+            type="number"
+            min="0"
+            required
+            class="form-control"
+          />
+        </div>
+
+        <div class="form-control border-0">
+          <label class="form-label">Marcador 2</label>
+          <input
+            v-model="updateFormData.marcador2"
+            type="number"
+            min="0"
+            required
+            class="form-control"
+          />
+        </div>
+
+        <div class="form-control border-0">
+          <label class="form-label">Mensaje</label>
+          <input
+            v-model="updateFormData.mensaje"
+            type="text"
+            class="form-control"
+          />
+        </div>
+
+        <button type="submit" class="btn btn-success mb-2 mx-2">
+          Guardar Cambios
+        </button>
+        <button @click="finishMatch" class="btn btn-danger mb-2">
+          Finalizar Partido
+        </button>
+      </form>
+    </div>
     <!-- Lista de jugadores en una tabla -->
     <table class="table table-striped">
       <thead class="thead-light">
@@ -127,6 +212,14 @@
                 Eliminar
               </button>
             </div>
+
+            <button
+              v-if="match.estado === 'Activo'"
+              @click="showUpdateForm(match)"
+              class="btn btn-info"
+            >
+              Actualizar
+            </button>
           </td>
         </tr>
       </tbody>
@@ -136,6 +229,8 @@
 
 <script>
 import moment from 'moment';
+import { io } from 'socket.io-client';
+const socket = io(process.env.VUE_APP_MICROSERVICES_URL);
 
 export default {
   data() {
@@ -155,6 +250,12 @@ export default {
         marcador2: 0,
         fecha: null,
         hora: '',
+      },
+      updateForm: false,
+      updateFormData: {
+        marcador1: 0,
+        marcador2: 0,
+        mensaje: '',
       },
     };
   },
@@ -178,7 +279,7 @@ export default {
 
     async fetchData() {
       try {
-        const { data } = await this.$microservices.get('/match');
+        const { data } = await this.$microservices.get('/api/v2/match');
 
         const matches = data.map(item => {
           item.dateFormat = moment(item.fecha).format('YYYY-MM-DD');
@@ -220,7 +321,7 @@ export default {
           estado: 'Activo',
         };
 
-        await this.$microservices.post('/match', data);
+        await this.$microservices.post('/api/v2/match', data);
         this.fetchData();
         this.hideCreateForm();
       } catch (error) {
@@ -260,7 +361,7 @@ export default {
           marcador2: Number(this.editFormData.marcador2),
         };
 
-        await this.$microservices.put(`/match/`, data);
+        await this.$microservices.put(`/api/v2/match/`, data);
         this.fetchData();
         this.hideEditForm();
       } catch (error) {
@@ -270,10 +371,53 @@ export default {
 
     async deleteMatch(id) {
       try {
-        await this.$microservices.delete(`/match/${id}`);
+        await this.$microservices.delete(`/api/v2/match/${id}`);
         this.fetchData();
       } catch (error) {
         console.error('Error al eliminar el partido', error);
+      }
+    },
+
+    showUpdateForm(item) {
+      this.updateForm = true;
+      this.updateFormData = item;
+    },
+
+    async finishMatch() {
+      try {
+        const data = {
+          id: this.updateFormData._id,
+          estado: 'Finalizado',
+          mensajes: [...this.updateFormData.mensajes, 'Partido Finalizado!'],
+        };
+
+        socket.emit('update-match', data);
+        this.fetchData();
+        this.updateForm = false;
+      } catch (error) {
+        console.error('Error al finalizar el partido', error);
+      }
+    },
+
+    async updateMatch() {
+      try {
+        const data = {
+          id: this.updateFormData._id,
+          marcador1: Number(this.updateFormData.marcador1),
+          marcador2: Number(this.updateFormData.marcador2),
+          mensajes: [...this.updateFormData.mensajes],
+        };
+
+        if (this.updateFormData.mensaje && this.updateFormData.mensaje !== '') {
+          data.mensajes.push(this.updateFormData.mensaje);
+          this.updateFormData.mensajes = data.mensajes;
+          this.updateFormData.mensaje = '';
+        }
+
+        socket.emit('update-match', data);
+        this.fetchData();
+      } catch (error) {
+        console.error('Error al registrar el marcador del partido', error);
       }
     },
 
