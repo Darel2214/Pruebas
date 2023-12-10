@@ -1,0 +1,20 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Report {
+  _id: String!
+  fecha: String!
+  hora: String!
+  equipo1: String!
+  equipo2: String!
+  marcador1: Int!
+  marcador2: Int!
+  mensajes: [String!]!
+  estado: String!
+}
+
+type Query {
+  todos: [Report!]!
+  equipo(equipo: String!): [Report!]!
+}
