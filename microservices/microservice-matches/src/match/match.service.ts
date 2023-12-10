@@ -23,7 +23,9 @@ export class MatchService {
   }
 
   update(updateMatchDto: UpdateMatchDto) {
-    return this.model.findByIdAndUpdate(updateMatchDto.id, updateMatchDto);
+    return this.model.findByIdAndUpdate(updateMatchDto.id, updateMatchDto, {
+      new: true,
+    });
   }
 
   remove(id: string) {
