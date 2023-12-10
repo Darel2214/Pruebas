@@ -1,57 +1,53 @@
 <template>
-  <div>
-    <!-- Menú desplegable -->
-    <nav class="sidebar">
-      <!-- Logo o título del dashboard -->
+  <nav class="sidebar">
+    <router-link to="/" class="nav-link">
+      <div class="sidebar-logo">
+        <img :src="getLogoPath()" alt="Logo" class="logo" />
+        <h2>Dashboard</h2>
+      </div>
+    </router-link>
 
-      <router-link to="/" class="nav-link">
-        <div class="sidebar-logo">
-          <img :src="getLogoPath()" alt="Logo" class="logo" />
-          <h2>Dashboard</h2>
-        </div>
-      </router-link>
+    <router-link to="/" class="nav-link">INICIO</router-link>
 
-      <router-link to="/" class="nav-link">INICIO</router-link>
+    <router-link to="/partidos" class="nav-link">PARTIDOS</router-link>
 
-      <router-link to="/partidos" class="nav-link">PARTIDOS</router-link>
+    <router-link to="/ClubFutbol" class="nav-link">CLUB DE FÚTBOL</router-link>
 
-      <router-link to="/ClubFutbol" class="nav-link"
-        >CLUB DE FÚTBOL</router-link
-      >
+    <router-link to="/Jugador" class="nav-link">JUGADOR</router-link>
 
-      <router-link to="/Jugador" class="nav-link">JUGADOR</router-link>
+    <router-link to="/Equipo" class="nav-link">EQUIPO</router-link>
 
-      <router-link to="/Equipo" class="nav-link">EQUIPO</router-link>
+    <router-link to="/Membresia" class="nav-link">MEMBRESIA</router-link>
 
-      <router-link to="/Membresia" class="nav-link">MEMBRESIA</router-link>
+    <router-link to="/ConcursoTorneo" class="nav-link"
+      >CONCURSO DE TORNEO</router-link
+    >
 
-      <router-link to="/ConcursoTorneo" class="nav-link"
-        >CONCURSO DE TORNEO</router-link
-      >
+    <router-link to="/Patrocinador" class="nav-link">PATROCINADOR</router-link>
 
-      <router-link to="/Patrocinador" class="nav-link"
-        >PATROCINADOR</router-link
-      >
+    <router-link to="/Torneo" class="nav-link">TORNEO</router-link>
 
-      <router-link to="/Torneo" class="nav-link">TORNEO</router-link>
+    <router-link to="/Participacion" class="nav-link"
+      >PARTICIPACION</router-link
+    >
 
-      <router-link to="/Participacion" class="nav-link"
-        >PARTICIPACION</router-link
-      >
-    </nav>
-
-    <!-- Contenido principal -->
-    <main>
-      <router-view />
-    </main>
-  </div>
+    <div @click="logout" class="close-link">Cerrar Sesión</div>
+  </nav>
 </template>
 
 <script>
+import { toast } from 'vue3-toastify';
+import { logout } from '../auth';
+
 export default {
   methods: {
     getLogoPath() {
       return `${process.env.BASE_URL}icon.png`;
+    },
+    logout() {
+      toast.error('Cerraste la Sesión!');
+      logout();
+      this.$router.push('/login');
     },
   },
 };
@@ -104,11 +100,19 @@ h2 {
   background-color: #32d692;
 }
 
-/* Espacio superior para el contenido principal */
-main {
-  margin-left: 250px; /* Ancho del menú */
-  background-color: #ffffff;
-  padding: 20px;
-  color: #333;
+.close-link {
+  cursor: pointer;
+  padding: 15px 15px 15px 30px; /* Espaciado en los enlaces */
+  transition: background-color 0.2s; /* Transición de color de fondo en el hover */
+  border-bottom: 1px solid #ddd; /* Línea separadora entre elementos */
+  background-color: rgba(245, 55, 55, 0.926); /* Fondo transparente */
+  text-decoration: none; /* Elimina el subrayado del texto */
+  color: #333; /* Color del texto en los enlaces */
+  text-transform: uppercase; /* Convertir el texto en mayúsculas */
+  letter-spacing: 1px; /* Espaciado entre letras */
+}
+
+.close-link:hover {
+  background-color: red;
 }
 </style>
