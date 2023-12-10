@@ -4,6 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MatchModule } from './match/match.module';
 import { MensajesModule } from './mensajes/mensajes.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { MensajesModule } from './mensajes/mensajes.module';
     }),
     MatchModule,
     MensajesModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

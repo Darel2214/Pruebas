@@ -1,5 +1,6 @@
 export enum RabbitMQ {
   MatchQueue = 'matches',
+  AuthQueue = 'auth',
 }
 
 export enum MatchMsg {
@@ -8,4 +9,9 @@ export enum MatchMsg {
   FIND_ONE = 'FIND_MATCH',
   UPDATE = 'UPDATE_MATCH',
   DELETE = 'DELETE_MATCH',
+}
+
+export enum AuthMsg {
+  LOGIN = 'LOGIN',
+  REGISTER = 'REGISTER',
 }
