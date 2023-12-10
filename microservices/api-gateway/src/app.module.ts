@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MatchModule } from './match/match.module';
+import { MensajesModule } from './mensajes/mensajes.module';
 
 @Module({
   imports: [
@@ -11,6 +12,7 @@ import { MatchModule } from './match/match.module';
       isGlobal: true,
     }),
     MatchModule,
+    MensajesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
